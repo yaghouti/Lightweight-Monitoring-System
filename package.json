@@ -1,7 +1,7 @@
 {
-  "name": "project-name",
+  "name": "lightweight-monitoring-system",
   "version": "1.0.0",
-  "description": "Project description.",
+  "description": "A change tracker for web pages.",
   "main": "index.js",
   "scripts": {
     "modifyingTest": "npm test",

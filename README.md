@@ -1,8 +1,8 @@
-# Project Name
-Project description.
+# Lightweight Monitoring System
+This is a system to track changes on websites and inform users via thei emails.
 
 # Requirements
-Nodejs
+Nodejs, Mongodb
 
 # Installation
 > npm i
