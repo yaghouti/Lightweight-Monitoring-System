@@ -18,7 +18,6 @@ exports.createUserGroup = async (name, emailsList) => {
   }
 };
 
-
 /**
  * Controller for getting user groups
  */
@@ -38,11 +37,10 @@ exports.getUserGroups = async () => {
 exports.getUserGroupsByName = async (name) => {
   try {
     const userGroups = await UserGroup.getByName(name);
-    if (!userGroups) {
+    if (!userGroups.length) {
       throw errors.userGroupNotFound;
     }
-
-    return userGroups;
+    return userGroups[0];
   }
   catch (error) {
     utils.handleError(error);
@@ -50,8 +48,8 @@ exports.getUserGroupsByName = async (name) => {
 };
 
 async function checkIfUserGroupExists(name) {
-  let userGroup = await UserGroup.getByName(name);
-  if (userGroup) {
+  let userGroups = await UserGroup.getByName([name]);
+  if (userGroups.length) {
     throw errors.userGroupAlreadyExists;
   }
 }

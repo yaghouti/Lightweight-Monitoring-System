@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "url"
+    },
+    "interval": {
+      "type": "integer",
+      "minimum": 10
+    },
+    "loadingTimeThreshold": {
+      "type": "integer",
+      "minimum": 100
+    },
+    "userGroups": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+      }
+    }
+  },
+  "required": [
+    "url",
+    "interval",
+    "loadingTimeThreshold",
+    "userGroups"
+  ],
+  "additionalProperties": false
+}

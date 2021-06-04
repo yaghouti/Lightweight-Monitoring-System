@@ -38,3 +38,26 @@ describe('User Group', function () {
     }
   });
 });
+
+describe('Tracker', function () {
+  it('Should add a tracker', async() => {
+    try {
+      let response = await axios.post(
+        serverUrl + '/trackers',
+        {
+          "url": "https://www.google.com",
+          "interval": 20,
+          "loadingTimeThreshold": 300,
+          "userGroups": [
+            "testUserGroupName"
+          ]
+        });
+      assert.deepEqual(response.data, {
+        "message": "Tracker for URL: 'https://www.google.com' created."
+      });
+    }
+    catch (e) {
+      throw new Error(e);
+    }
+  });
+});

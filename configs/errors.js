@@ -17,6 +17,21 @@ exports.getUserGroupsError = {
 exports.userGroupNotFound = {
   code: 'userGroupNotFound',
   message: 'User group not found!'
+};exports.trackerAlreadyExists = {
+  code: 'trackerAlreadyExists',
+  message: 'Tracker already exists!'
+};
+exports.createTrackerError = {
+  code: 'createTrackerError',
+  message: 'Error while creating tracker!'
+};
+exports.getTrackersError = {
+  code: 'getTrackersError',
+  message: 'Error while getting trackers!'
+};
+exports.trackerNotFound = {
+  code: 'trackerNotFound',
+  message: 'Tracker not found!'
 };
 exports.dbError = {
   code: 'dbError',

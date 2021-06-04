@@ -1,14 +1,14 @@
 {
   "stats": {
-    "suites": 1,
-    "tests": 2,
-    "passes": 2,
+    "suites": 2,
+    "tests": 3,
+    "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2021-06-04T18:57:55.063Z",
-    "end": "2021-06-04T18:57:55.316Z",
-    "duration": 253,
-    "testsRegistered": 2,
+    "start": "2021-06-04T19:57:19.259Z",
+    "end": "2021-06-04T19:57:19.419Z",
+    "duration": 160,
+    "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "1a8b79c9-50c0-4a01-8cbd-48e4f8adc6dc",
+      "uuid": "01defa9f-5095-479e-9ecb-dad644a9a57e",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1a2dbe9c-9c4a-4540-99b6-8e4c052b93b2",
+          "uuid": "0ccea8e2-2b95-4398-8447-0b47914d9fa5",
           "title": "User Group",
           "fullFile": "F:\\Apply\\Sensory Minds\\Lightweight Monitoring System\\tests\\mochaTests.js",
           "file": "\\mochaTests.js",
@@ -38,7 +38,7 @@
               "title": "Should add a user group",
               "fullTitle": "User Group Should add a user group",
               "timedOut": false,
-              "duration": 164,
+              "duration": 112,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "try {\n  let response = await axios.post(\n    serverUrl + '/userGroups',\n    {\n      \"name\": \"testUserGroupName\",\n      \"emails\": [\n        \"majid.yaghouti@gmail.com\"\n      ]\n    });\n  assert.deepEqual(response.data, {\n    \"message\": \"User group 'testUserGroupName' created.\"\n  });\n}\ncatch (e) {\n  throw new Error(e);\n}",
               "err": {},
-              "uuid": "a35fe49c-0381-4427-9808-85ab19184b45",
-              "parentUUID": "1a2dbe9c-9c4a-4540-99b6-8e4c052b93b2",
+              "uuid": "03663fa9-7954-41d6-ad49-50c3a1646cb2",
+              "parentUUID": "0ccea8e2-2b95-4398-8447-0b47914d9fa5",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Should get user groups",
               "fullTitle": "User Group Should get user groups",
               "timedOut": false,
-              "duration": 37,
+              "duration": 16,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,60 @@
               "context": null,
               "code": "try {\n  let response = await axios.get(serverUrl + '/userGroups');\n  assert.typeOf(response.data.groups, 'array');\n  response.data.groups.forEach(group => {\n    assert.hasAllKeys(group, [\n      'name', 'emails'\n    ]);\n  });\n}\ncatch (e) {\n  throw new Error(e);\n}",
               "err": {},
-              "uuid": "7dbdb78f-2d47-413b-ad3b-0126976c7367",
-              "parentUUID": "1a2dbe9c-9c4a-4540-99b6-8e4c052b93b2",
+              "uuid": "357a8bf0-ffcd-4a1c-ad70-375a2d082d51",
+              "parentUUID": "0ccea8e2-2b95-4398-8447-0b47914d9fa5",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a35fe49c-0381-4427-9808-85ab19184b45",
-            "7dbdb78f-2d47-413b-ad3b-0126976c7367"
+            "03663fa9-7954-41d6-ad49-50c3a1646cb2",
+            "357a8bf0-ffcd-4a1c-ad70-375a2d082d51"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 201,
+          "duration": 128,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e16a69bc-4033-4411-8880-b3993f2d6a64",
+          "title": "Tracker",
+          "fullFile": "F:\\Apply\\Sensory Minds\\Lightweight Monitoring System\\tests\\mochaTests.js",
+          "file": "\\mochaTests.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should add a tracker",
+              "fullTitle": "Tracker Should add a tracker",
+              "timedOut": false,
+              "duration": 14,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  let response = await axios.post(\n    serverUrl + '/trackers',\n    {\n      \"url\": \"https://www.google.com\",\n      \"interval\": 20,\n      \"loadingTimeThreshold\": 300,\n      \"userGroups\": [\n        \"testUserGroupName\"\n      ]\n    });\n  assert.deepEqual(response.data, {\n    \"message\": \"Tracker for URL: 'https://www.google.com' created.\"\n  });\n}\ncatch (e) {\n  throw new Error(e);\n}",
+              "err": {},
+              "uuid": "b9ecc547-27a3-4d17-8367-d772ff00be7a",
+              "parentUUID": "e16a69bc-4033-4411-8880-b3993f2d6a64",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b9ecc547-27a3-4d17-8367-d772ff00be7a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
