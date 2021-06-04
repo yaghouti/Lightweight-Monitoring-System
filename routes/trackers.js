@@ -3,11 +3,13 @@ const errors = require('../configs/errors');
 const trackersController = require('../controllers/trackers');
 const createTrackerSchema = require('../schema/createTracker.json');
 const getTrackersSchema = require('../schema/getTrackers.json');
+const getTrackingDataSchema = require('../schema/getTrackingData.json');
 
 module.exports = [
   {method: 'post', route: '/api/v1/trackers', schema: {body: createTrackerSchema}, handler: createTracker},
   {method: 'get', route: '/api/v1/trackers', schema: {query: getTrackersSchema}, handler: getTrackers},
-  {method: 'get', route: '/api/v1/trackers/starter', handler: startTracking}
+  {method: 'get', route: '/api/v1/trackers/starter', handler: startTracking},
+  {method: 'get', route: '/api/v1/trackers/data', schema: {query: getTrackingDataSchema}, handler: getTrackingData}
 ];
 
 /**
@@ -75,7 +77,7 @@ async function getTrackers(req, res) {
 }
 
 /**
- * Controller to start tracking
+ * Route handler for starting tracking
  * @param req
  * @param res
  */
@@ -83,6 +85,37 @@ async function startTracking(req, res) {
   try {
     const count = await trackersController.startTracking();
     res.status(200).json({message: `${count} Trackers started`});
+  }
+  catch (error) {
+    switch (error.code) {
+      case errors.getTrackersError.code:
+        res.status(500).send({error: error});
+        break;
+      case errors.trackerNotFound.code:
+        res.status(404).send({error: error});
+        break;
+      default:
+        utils.log(errors.internalServerError, error);
+        res.status(500).send({error: errors.internalServerError});
+    }
+  }
+}
+
+/**
+ * Route handler for getting tracking data
+ * @param req
+ * @param res
+ */
+async function getTrackingData(req, res) {
+  try {
+    let trackingData;
+    if (req.query && req.query.hasOwnProperty('url')) {
+      trackingData = await trackersController.getTrackingDataByUrl(url);
+    }
+    else {
+      trackingData = await trackersController.getAllTrackingData();
+    }
+    res.status(200).json(trackingData);
   }
   catch (error) {
     switch (error.code) {

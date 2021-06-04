@@ -19,8 +19,7 @@ exports.createTracker = async(url, interval, loadingTimeThreshold, userGroups) =
     tracker.track();
   }
   catch (error) {
-    utils.log(error, {url});
-    throw error;
+    utils.handleError(error, {url});
   }
 };
 
@@ -32,8 +31,7 @@ exports.getAllTrackers = async() => {
     return await Tracker.getAll();
   }
   catch (error) {
-    utils.log(error);
-    throw error;
+    utils.handleError(error);
   }
 };
 
@@ -46,8 +44,7 @@ exports.getTrackersByUrl = async(url) => {
     return await Tracker.getByUrl([url]);
   }
   catch (error) {
-    utils.log(error);
-    throw error;
+    utils.handleError(error);
   }
 };
 
@@ -64,8 +61,32 @@ exports.startTracking = async() => {
     return trackersList.length;
   }
   catch (error) {
-    utils.log(error);
-    throw error;
+    utils.handleError(error);
+  }
+};
+
+/**
+ * Controller to get tracking data
+ */
+exports.getAllTrackingData = async() => {
+  try {
+    return await Tracker.getTrackingData();
+  }
+  catch (error) {
+    utils.handleError(error);
+  }
+};
+
+/**
+ * Controller to get tracking data by url
+ * @param url
+ */
+exports.getTrackingDataByUrl = async(url) => {
+  try {
+    return await Tracker.getTrackingData([url]);
+  }
+  catch (error) {
+    utils.handleError(error);
   }
 };
 

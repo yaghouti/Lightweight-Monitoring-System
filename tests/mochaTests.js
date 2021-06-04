@@ -75,4 +75,19 @@ describe('Tracker', function () {
       throw new Error(e);
     }
   });
+
+  it('Should get tracking data', async() => {
+    try {
+      let response = await axios.get(serverUrl + '/trackers/data');
+      assert.typeOf(response.data, 'array');
+      response.data.forEach(tracker => {
+        assert.hasAllKeys(tracker, [
+          'url', 'time', 'loadingTime', 'statusCode'
+        ]);
+      });
+    }
+    catch (e) {
+      throw new Error(e);
+    }
+  });
 });

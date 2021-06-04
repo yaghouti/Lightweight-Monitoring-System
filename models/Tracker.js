@@ -86,7 +86,22 @@ class Tracker {
       utils.handleError(errors.getTrackersError, {e});
     }
   }
-
+  
+  static async getTrackingData(urls) {
+    try {
+      let dbObj = await mongodb.getDbObject();
+      let projection = {_id: 0};
+      let query = {};
+      if (urls) {
+        query.url = {$in: urls};
+      }
+      return await dbObj.collection(TRACKING_DATA_COLLECTION_NAME).find(query).project(projection).toArray();
+    }
+    catch (e) {
+      utils.handleError(errors.getTrackingDataError, {e});
+    }
+  }
+  
   async track() {
     let self = this;
     if (intervals.hasOwnProperty(self._url)) {
