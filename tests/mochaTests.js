@@ -60,4 +60,19 @@ describe('Tracker', function () {
       throw new Error(e);
     }
   });
+
+  it('Should get trackers', async() => {
+    try {
+      let response = await axios.get(serverUrl + '/trackers');
+      assert.typeOf(response.data.trackers, 'array');
+      response.data.trackers.forEach(tracker => {
+        assert.hasAllKeys(tracker, [
+          'url', 'interval', 'loadingTimeThreshold', 'userGroups'
+        ]);
+      });
+    }
+    catch (e) {
+      throw new Error(e);
+    }
+  });
 });

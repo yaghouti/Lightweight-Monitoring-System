@@ -23,6 +23,33 @@ exports.createTracker = async(url, interval, loadingTimeThreshold, userGroups) =
   }
 };
 
+/**
+ * Controller for getting trackers
+ */
+exports.getAllTrackers = async() => {
+  try {
+    return await Tracker.getAll();
+  }
+  catch (error) {
+    utils.log(error);
+    throw error;
+  }
+};
+
+/**
+ * Controller for getting trackers by url
+ * @param url
+ */
+exports.getTrackersByUrl = async(url) => {
+  try {
+    return await Tracker.getByUrl([url]);
+  }
+  catch (error) {
+    utils.log(error);
+    throw error;
+  }
+};
+
 async function checkIfUserGroupsExist(userGroups) {
   let existingGroups = await UserGroup.getByName(userGroups);
   let notFounds = [];
