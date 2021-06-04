@@ -1,0 +1,56 @@
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <style>
+        th,
+        td,
+        body {
+            direction: ltr;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div
+            class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+    >
+        <h5 class="my-0 mr-md-auto font-weight-normal">Project Name</h5>
+    </div>
+
+    <div class="container">
+        <div class="card-deck mb-4 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div>
+                    <button class="btn btn-success" v-on:click="loadModels()">Refresh</button>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Field 1</th>
+                            <th>Field 2</th>
+                            <th>Field 3</th>
+                            <th>Field 4</th>
+                        </tr>
+                        <tr v-for="(data, index) in models">
+                            <td>{{data.f1}}</td>
+                            <td>{{data.f2}}</td>
+                            <td>{{data.f3}}</td>
+                            <td>{{data.f4}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            Project Footer
+        </footer>
+    </div>
+</div>
+</body>
+</html>
