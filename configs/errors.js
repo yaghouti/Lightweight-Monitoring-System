@@ -33,6 +33,22 @@ exports.trackerNotFound = {
   code: 'trackerNotFound',
   message: 'Tracker not found!'
 };
+exports.storeTrackingDataError = {
+  code: 'storeTrackingDataError',
+  message: 'Error while storing tracking data!'
+};
+exports.loadingTimeChange = {
+  code: 'loadingTimeChange',
+  message: 'Loading time change detected!'
+};
+exports.statusCodeChange = {
+  code: 'statusCodeChange',
+  message: 'Status code change detected!'
+};
+exports.getTrackingDataError = {
+  code: 'getTrackingDataError',
+  message: 'Error while getting tracking data!'
+};
 exports.dbError = {
   code: 'dbError',
   message: 'Database error!'

@@ -35,6 +35,7 @@ async function start() {
   });
   app.listen(config.server.port, () => {
     console.log(`Server is listening on port ${config.server.port}!`);
+    startTracking();
   });
 
 }
@@ -62,4 +63,13 @@ function loadRoutes() {
       resolve();
     });
   })
+}
+
+async function startTracking() {
+  try{
+    await axios.get(`http://localhost:${config.server.port}/api/v1/trackers/starter`);
+  }
+  catch (e){
+    console.log(e);
+  }
 }

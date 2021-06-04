@@ -6,7 +6,8 @@ const getTrackersSchema = require('../schema/getTrackers.json');
 
 module.exports = [
   {method: 'post', route: '/api/v1/trackers', schema: {body: createTrackerSchema}, handler: createTracker},
-  {method: 'get', route: '/api/v1/trackers', schema: {query: getTrackersSchema}, handler: getTrackers}
+  {method: 'get', route: '/api/v1/trackers', schema: {query: getTrackersSchema}, handler: getTrackers},
+  {method: 'get', route: '/api/v1/trackers/starter', handler: startTracking}
 ];
 
 /**
@@ -65,6 +66,31 @@ async function getTrackers(req, res) {
     switch (error.code) {
       case errors.getTrackersError.code:
         res.status(500).send({error: error});
+        break;
+      default:
+        utils.log(errors.internalServerError, error);
+        res.status(500).send({error: errors.internalServerError});
+    }
+  }
+}
+
+/**
+ * Controller to start tracking
+ * @param req
+ * @param res
+ */
+async function startTracking(req, res) {
+  try {
+    const count = await trackersController.startTracking();
+    res.status(200).json({message: `${count} Trackers started`});
+  }
+  catch (error) {
+    switch (error.code) {
+      case errors.getTrackersError.code:
+        res.status(500).send({error: error});
+        break;
+      case errors.trackerNotFound.code:
+        res.status(404).send({error: error});
         break;
       default:
         utils.log(errors.internalServerError, error);

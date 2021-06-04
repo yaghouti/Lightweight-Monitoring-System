@@ -16,6 +16,7 @@ exports.createTracker = async(url, interval, loadingTimeThreshold, userGroups) =
     await checkIfUserGroupsExist(userGroups);
     let tracker = new Tracker(url, interval, loadingTimeThreshold, userGroups);
     await tracker.save();
+    tracker.track();
   }
   catch (error) {
     utils.log(error, {url});
@@ -43,6 +44,24 @@ exports.getAllTrackers = async() => {
 exports.getTrackersByUrl = async(url) => {
   try {
     return await Tracker.getByUrl([url]);
+  }
+  catch (error) {
+    utils.log(error);
+    throw error;
+  }
+};
+
+/**
+ * Controller to start tracking
+ */
+exports.startTracking = async() => {
+  try {
+    const trackersList = await Tracker.getAll();
+    trackersList.forEach(trackerData => {
+      let tracker = new Tracker(trackerData.url, trackerData.interval, trackerData.userGroups);
+      tracker.track();
+    });
+    return trackersList.length;
   }
   catch (error) {
     utils.log(error);
