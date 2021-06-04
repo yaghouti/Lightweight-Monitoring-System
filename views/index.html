@@ -21,26 +21,34 @@
     <div
             class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
     >
-        <h5 class="my-0 mr-md-auto font-weight-normal">Project Name</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal">Website Change Tracker</h5>
     </div>
 
     <div class="container">
         <div class="card-deck mb-4 text-center">
             <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Select Tracker</h4>
+                    <select v-model="selectedTracker" @change="onTrackerChange($event)">
+                        <option v-for="tracker in trackers" :value="tracker.url">
+                            {{tracker.url}}
+                        </option>
+                    </select>
+                </div>
                 <div>
-                    <button class="btn btn-success" v-on:click="loadModels()">Refresh</button>
+                    <button class="btn btn-success" v-on:click="loadTrackingData()">Refresh</button>
                     <table class="table table-bordered">
                         <tr>
-                            <th>Field 1</th>
-                            <th>Field 2</th>
-                            <th>Field 3</th>
-                            <th>Field 4</th>
+                            <th>URL</th>
+                            <th>Time</th>
+                            <th>Loading Time</th>
+                            <th>Status Code</th>
                         </tr>
-                        <tr v-for="(data, index) in models">
-                            <td>{{data.f1}}</td>
-                            <td>{{data.f2}}</td>
-                            <td>{{data.f3}}</td>
-                            <td>{{data.f4}}</td>
+                        <tr v-for="(data, index) in filteredTrackingData">
+                            <td>{{data.url}}</td>
+                            <td>{{data.time}}</td>
+                            <td>{{data.loadingTime}}</td>
+                            <td>{{data.statusCode}}</td>
                         </tr>
                     </table>
                 </div>
@@ -48,7 +56,7 @@
         </div>
 
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            Project Footer
+            Website Change Tracker
         </footer>
     </div>
 </div>
