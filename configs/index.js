@@ -4,10 +4,10 @@ let config = {
     server: {
       port: 3000
     },
-    mongo: {
+    mongodb: {
       host: 'localhost',
       port: 27017,
-      database: 'dbName'
+      database: 'lightweightMonitoringSystem'
     }
   },
   staging: {
@@ -15,10 +15,10 @@ let config = {
     server: {
       port: 4000
     },
-    mongo: {
+    mongodb: {
       host: 'localhost',
       port: 27017,
-      database: 'dbName'
+      database: 'lightweightMonitoringSystem'
     }
   },
   production: {
@@ -26,10 +26,10 @@ let config = {
     server: {
       port: 5000
     },
-    mongo: {
+    mongodb: {
       host: 'localhost',
       port: 27017,
-      database: 'dbName'
+      database: 'lightweightMonitoringSystem'
     }
   }
 };

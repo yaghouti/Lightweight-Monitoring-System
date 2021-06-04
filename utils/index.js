@@ -1,16 +1,19 @@
 const MongoClient = require('mongodb').MongoClient;
-const config = require('../configs/index')();
 let errors = require("../configs/errors");
 
 // Connection URL
-const url = `mongodb://${config.mongo.host}:${config.mongo.port}`;
+let url = `mongodb://localhost:27017`;
 
 // Database Name
-const dbName = config.mongo.database;
+let dbName = 'default';
 
 let client;
 
 exports.mongodb = {
+  setConfig(config){
+    url = `mongodb://${config.host}:${config.port}`;
+    dbName = config.database;
+  },
   getDbObject: async function () {
     if (client && client.isConnected()) {
       return client.db(dbName);

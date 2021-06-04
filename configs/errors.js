@@ -2,15 +2,23 @@ exports.internalServerError = {
   code: 'internalServerError',
   message: 'Internal Server Error!'
 };
-exports.modelAlreadyExists = {
-  code: 'modelAlreadyExists',
-  message: 'Model already exists!'
+exports.userGroupAlreadyExists = {
+  code: 'userGroupAlreadyExists',
+  message: 'User group already exists!'
 };
-exports.createModelError = {
-  code: 'createModelError',
-  message: 'Error while creating model!'
+exports.createUserGroupError = {
+  code: 'createUserGroupError',
+  message: 'Error while creating user group!'
 };
-exports.getModelsError = {
-  code: 'getModelsError',
-  message: 'Error while getting model!'
+exports.getUserGroupsError = {
+  code: 'getUserGroupsError',
+  message: 'Error while getting user groups!'
+};
+exports.userGroupNotFound = {
+  code: 'userGroupNotFound',
+  message: 'User group not found!'
+};
+exports.dbError = {
+  code: 'dbError',
+  message: 'Database error!'
 };
