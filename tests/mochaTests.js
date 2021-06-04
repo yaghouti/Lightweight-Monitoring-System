@@ -3,19 +3,30 @@ const assert = require('chai').assert;
 const axios = require('axios');
 const serverUrl = 'http://localhost:3000/api/v1';
 
+const testUserGroup = {
+  "name": "testUserGroupName" + String(Math.random()).replace('.', ''),
+  "emails": [
+    "majid.yaghouti@gmail.com"
+  ]
+};
+const testTracker = {
+  "url": `https://www.google${String(Math.random()).replace('.', '')}.com`,
+  "interval": 20,
+  "loadingTimeThreshold": 300,
+  "userGroups": [
+    `${testUserGroup.name}`
+  ]
+};
+
 describe('User Group', function () {
   it('Should add a user group', async() => {
     try {
       let response = await axios.post(
         serverUrl + '/userGroups',
-        {
-          "name": "testUserGroupName",
-          "emails": [
-            "majid.yaghouti@gmail.com"
-          ]
-        });
+        testUserGroup
+      );
       assert.deepEqual(response.data, {
-        "message": "User group 'testUserGroupName' created."
+        "message": `User group '${testUserGroup.name}' created.`
       });
     }
     catch (e) {
@@ -44,16 +55,10 @@ describe('Tracker', function () {
     try {
       let response = await axios.post(
         serverUrl + '/trackers',
-        {
-          "url": "https://www.google.com",
-          "interval": 20,
-          "loadingTimeThreshold": 300,
-          "userGroups": [
-            "testUserGroupName"
-          ]
-        });
+        testTracker
+      );
       assert.deepEqual(response.data, {
-        "message": "Tracker for URL: 'https://www.google.com' created."
+        "message": `Tracker for URL: '${testTracker.url}' created.`
       });
     }
     catch (e) {

@@ -5,10 +5,11 @@ const UserGroup = require("../models/UserGroup");
 
 /**
  * Controller for creating a tracker
- * @param url
- * @param interval
- * @param loadingTimeThreshold
- * @param userGroups
+ * @param {string} url
+ * @param {number} interval The interval between two checks of the url
+ * @param {number} loadingTimeThreshold A threshold in milliseconds to be considered as a change in loading time
+ * @param {string[]} userGroups List of user groups to be informed of changes
+ * @return undefined
  */
 exports.createTracker = async(url, interval, loadingTimeThreshold, userGroups) => {
   try {

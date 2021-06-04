@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "940f1be7-3d24-49c0-8006-a0498d60cf0a",
+		"name": "Lightweight Monitoring System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"userGroup1\",\r\n    \"emails\": [\r\n        \"majid.yaghouti@gmail.com\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/userGroups",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"userGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/userGroups",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"userGroups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Groups By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/userGroups/userGroup1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"userGroups",
+						"userGroup1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Tracker",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://www.google.com\",\r\n    \"interval\": 15,\r\n    \"loadingTimeThreshold\": 100,\r\n    \"userGroups\": [\r\n        \"userGroup1\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/trackers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"trackers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Trackers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/trackers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"trackers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Trackers By URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/trackers?url=https://www.google.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"trackers"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://www.google.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Trackers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/trackers/starter",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"trackers",
+						"starter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tracking Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/trackers/data",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"trackers",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tracking Data By URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/trackers/data?url=https://www.google.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"trackers",
+						"data"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://www.google.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

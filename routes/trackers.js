@@ -110,7 +110,7 @@ async function getTrackingData(req, res) {
   try {
     let trackingData;
     if (req.query && req.query.hasOwnProperty('url')) {
-      trackingData = await trackersController.getTrackingDataByUrl(url);
+      trackingData = await trackersController.getTrackingDataByUrl(req.query.url);
     }
     else {
       trackingData = await trackersController.getAllTrackingData();
