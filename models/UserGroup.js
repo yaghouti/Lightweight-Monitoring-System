@@ -28,6 +28,19 @@ class UserGroup {
     }
   }
 
+  static async getAll() {
+    try {
+      let dbObj = await mongodb.getDbObject();
+      return await this._fetchUserGroups(dbObj);
+    }
+    catch (e) {
+      if (e.hasOwnProperty('code') && e.code === errors.getUserGroupsError.code) {
+        throw e;
+      }
+      utils.handleError(errors.getUserGroupsError, {e});
+    }
+  }
+
   static async getByName(name) {
     try {
       let dbObj = await mongodb.getDbObject();

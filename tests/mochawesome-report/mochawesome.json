@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-06-04T18:57:55.063Z",
+    "end": "2021-06-04T18:57:55.316Z",
+    "duration": 253,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1a8b79c9-50c0-4a01-8cbd-48e4f8adc6dc",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1a2dbe9c-9c4a-4540-99b6-8e4c052b93b2",
+          "title": "User Group",
+          "fullFile": "F:\\Apply\\Sensory Minds\\Lightweight Monitoring System\\tests\\mochaTests.js",
+          "file": "\\mochaTests.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should add a user group",
+              "fullTitle": "User Group Should add a user group",
+              "timedOut": false,
+              "duration": 164,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  let response = await axios.post(\n    serverUrl + '/userGroups',\n    {\n      \"name\": \"testUserGroupName\",\n      \"emails\": [\n        \"majid.yaghouti@gmail.com\"\n      ]\n    });\n  assert.deepEqual(response.data, {\n    \"message\": \"User group 'testUserGroupName' created.\"\n  });\n}\ncatch (e) {\n  throw new Error(e);\n}",
+              "err": {},
+              "uuid": "a35fe49c-0381-4427-9808-85ab19184b45",
+              "parentUUID": "1a2dbe9c-9c4a-4540-99b6-8e4c052b93b2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should get user groups",
+              "fullTitle": "User Group Should get user groups",
+              "timedOut": false,
+              "duration": 37,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  let response = await axios.get(serverUrl + '/userGroups');\n  assert.typeOf(response.data.groups, 'array');\n  response.data.groups.forEach(group => {\n    assert.hasAllKeys(group, [\n      'name', 'emails'\n    ]);\n  });\n}\ncatch (e) {\n  throw new Error(e);\n}",
+              "err": {},
+              "uuid": "7dbdb78f-2d47-413b-ad3b-0126976c7367",
+              "parentUUID": "1a2dbe9c-9c4a-4540-99b6-8e4c052b93b2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a35fe49c-0381-4427-9808-85ab19184b45",
+            "7dbdb78f-2d47-413b-ad3b-0126976c7367"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 201,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}

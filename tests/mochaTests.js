@@ -1,3 +1,4 @@
+// Hint: To generate mochawesome report, execute mocha mochaTest.js --reporter mochawesome
 const assert = require('chai').assert;
 const axios = require('axios');
 const serverUrl = 'http://localhost:3000/api/v1';
